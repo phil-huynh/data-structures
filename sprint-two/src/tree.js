@@ -17,6 +17,16 @@ treeMethods.addChild = function(value) {
 
 treeMethods.contains = function(target) {
 
+  if (this.value === target) {
+    return true;
+  } else if (this.children.length > 0) {
+    for (var i = 0; i < this.children.length; i++) {
+      var found = this.children[i].contains(target);
+      if (found) {
+        return true;
+      }
+    }
+  }
 
 
   return false;
@@ -25,5 +35,6 @@ treeMethods.contains = function(target) {
 
 
 /*
- * Complexity: What is the time complexity of the above functions?
+addChild - 0(1)
+contains - polynomial time
  */
